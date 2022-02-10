@@ -30,7 +30,7 @@ export const SEO = (props: SEOProps) => {
     <NextSeo
       title={title}
       titleTemplate={titleTemplate}
-      description={description}
+      description={description || siteConfig.description}
       canonical={`${siteConfig.siteUrl}${router.asPath}`}
       openGraph={{
         type: article ? "article" : "website",

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteUrl: 'https://example.com',
+  siteUrl: 'https://next-mdx-casper.vercel.app',
   title: 'Mdx Blog Demo',
   description: 'Thoughts, stories and ideas.',
   logo: '/static/images/logo.png',
