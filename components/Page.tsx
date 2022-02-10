@@ -85,7 +85,7 @@ export const Page = ({ cmsData }: PageProps) => {
                 <MDXRenderContent mdxSource={mdxSource} />
               </div>
             </section>
-            <p> cc `{JSON.stringify(page)}`</p>
+            
             {page.comment && commenting.system && <CommentContainer {...{ commenting, url: resolveUrl({ cmsUrl, slug }) }} />}
           </article>
         </div>

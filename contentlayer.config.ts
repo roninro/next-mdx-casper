@@ -69,9 +69,9 @@ const Post = defineDocumentType(() => ({
     toc: { type: 'boolean', required: false },
     draft: { type: 'boolean', required: false },
     comment: { type: 'boolean', required: false },
-    authors: { type: 'json', required: false },
-    tags: { type: 'json', required: false },
     page: { type: 'boolean', required: false },
+    authors: { type: 'list', of: { type: 'string' }, default: [], required: false },
+    tags: { type: 'list', of: { type: 'string' }, default: [],  required: false },
   },
   computedFields,
 }))
@@ -127,7 +127,7 @@ const contentLayerConfig = makeSource({
       rehypeAutolinkHeadings,
       rehypeKatex,
       rehypeCodeTitles,
-      [rehypePrismPlus],
+      [rehypePrismPlus, {ignoreMissing: true}],
     ],
   },
 })

@@ -49,8 +49,7 @@
   /* Font */
   --prism-font-size: 1em;
   --prism-line-height: normal;
-  --prism-font-family: SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --prism-font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --prism-inline-font-size: var(--prism-font-size);
   --prism-block-font-size: var(--prism-font-size);
 
@@ -97,13 +96,13 @@
 
 /* Inline Pre Code */
 pre {
-    font-size: var(--prism-block-font-size);
-    padding: var(--prism-block-padding-y) var(--prism-block-padding-x) !important;
-    margin: var(--prism-block-margin-y) var(--prism-block-margin-x);
-    border-radius: var(--prism-block-radius);
-    overflow: auto;
-    background: var(--prism-background);
-    color: var(--prism-foreground) !important;
+  font-size: var(--prism-block-font-size);
+  padding: var(--prism-block-padding-y) var(--prism-block-padding-x) !important;
+  margin: var(--prism-block-margin-y) var(--prism-block-margin-x);
+  border-radius: var(--prism-block-radius);
+  overflow: auto;
+  background: var(--prism-background);
+  color: var(--prism-foreground) !important;
 }
 
 pre,
@@ -123,9 +122,8 @@ code {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  color: var(--prism-foreground) !important;
+  /* color: var(--prism-foreground) !important; */
 }
-
 
 div[class*='language-'],
 pre[class*='language-'],
@@ -309,8 +307,8 @@ code[class*='language-'] ::-moz-selection {
 }
 
 /* overrides color-values for the Line Numbers plugin
-   * http://prismjs.com/plugins/line-numbers/
-   */
+     * http://prismjs.com/plugins/line-numbers/
+     */
 .line-numbers .line-numbers-rows {
   border-right-color: var(--prism-line-number);
 }
@@ -320,8 +318,8 @@ code[class*='language-'] ::-moz-selection {
 }
 
 /* overrides color-values for the Line Highlight plugin
-    * http://prismjs.com/plugins/line-highlight/
-    */
+      * http://prismjs.com/plugins/line-highlight/
+      */
 .line-highlight {
   background: var(--prism-line-highlight-background);
 }
@@ -331,17 +329,17 @@ pre {
 }
 
 /**
-   * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
-   * 1. Make the element just wide enough to fit its content.
-   * 2. Always fill the visible space in .code-highlight.
-   */
+     * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+     * 1. Make the element just wide enough to fit its content.
+     * 2. Always fill the visible space in .code-highlight.
+     */
 .code-highlight {
   float: left; /* 1 */
   min-width: 100%; /* 2 */
 }
 
 .code-line {
-    border-style: solid;
+  border-style: solid;
   line-height: 2em;
   display: block;
   padding-left: 16px;
@@ -387,9 +385,9 @@ pre[class*='language-'] {
   /* border-radius: 0.125rem; */
 }
 /* 
-:not(pre) > code {
-  border-radius: 0.125rem;
-} */
+  :not(pre) > code {
+    border-radius: 0.125rem;
+  } */
 
 :not(pre) > code {
   padding: 0.1em;
@@ -431,9 +429,3 @@ pre[class*='language-'] {
   background: #2d3748;
   color: #edf2f7;
 }
-
-:not(pre) > code {
-  color: #b794f4;
-}
-
-

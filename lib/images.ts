@@ -87,12 +87,17 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
       }
       if (!['ECONNRESET', 'ECONTENT'].includes(code)) {
         console.warn(`images.ts: Error while probing image with url: ${url}.`)
-        throw e
+        // throw e
+        return null
       }
-      //console.warn(`images.ts: Network error while probing image with url: ${url}.`)
     }
   } while (hasError && retry < maxRetries)
-  if (hasError) throw new Error(`images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`)
+  // if (hasError) throw new Error(`images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`)
+  if (hasError) {
+    console.log(`images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`)
+    return null
+  }
+
   if (0 === width + height) return null
 
   setCache(cacheKey, { width, height })
