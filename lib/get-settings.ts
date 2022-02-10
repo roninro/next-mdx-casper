@@ -1,12 +1,11 @@
-import { createNextImage, NavItem, NextImage, Nullable } from "./mdx";
-import { siteConfig, appConfig } from "config/site";
+import { createNextImage, NavItem, NextImage, Nullable } from './mdx'
+import { siteConfig, appConfig } from 'config/site'
 
 export type DarkMode = 'dark' | 'light' | null
-export type CommentingSystem = 'commento' | 'disqus' | 'giscus'  | null
+export type CommentingSystem = 'commento' | 'disqus' | 'giscus' | null
 export interface StringKeyMap {
   [key: string]: any
 }
-
 
 export interface Settings {
   siteUrl: string
@@ -24,13 +23,13 @@ export interface Settings {
         url: string
       }>
     | undefined
-  
+
   // processEnv: ProcessEnvProps
   secondary_navigation?: NavItem[]
   iconImage?: NextImage
   logoImage?: NextImage
   coverImage?: NextImage
-  
+
   darkMode: {
     defaultMode: DarkMode
     overrideOS: boolean
@@ -52,8 +51,6 @@ export interface Settings {
     giscusConfig: StringKeyMap
   }
 }
-
-
 
 export async function getAllSettings(): Promise<Settings> {
   const logoImage = await createNextImage(siteConfig.logo)

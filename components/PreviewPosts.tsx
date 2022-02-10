@@ -20,7 +20,7 @@ interface PreviewPostsProps {
 export const PreviewPosts = ({ settings, primaryTag, posts, prev, next }: PreviewPostsProps) => {
   const text = get(getLang(settings.lang))
   const { siteUrl: cmsUrl } = settings
-  const url = (primaryTag && resolveUrl({ cmsUrl, collectionPath:'/tag', slug: primaryTag.slug })) || ''
+  const url = (primaryTag && resolveUrl({ cmsUrl, collectionPath: '/tag', slug: primaryTag.slug })) || ''
   const primaryTagCount = primaryTag?.count || 0
 
   return (
@@ -48,8 +48,7 @@ export const PreviewPosts = ({ settings, primaryTag, posts, prev, next }: Previe
                       </h4>
                       <div className="read-next-card-meta">
                         <p>
-                          <time dateTime={post.date || ''}>{dayjs(post.date || '').format('D MMMM, YYYY')}</time> –{' '}
-                          {post.reading_time?.replace(`min read`, text(`MIN_READ`))}
+                          <time dateTime={post.date || ''}>{dayjs(post.date || '').format('D MMMM, YYYY')}</time> – {post.reading_time?.replace(`min read`, text(`MIN_READ`))}
                         </p>
                       </div>
                     </li>

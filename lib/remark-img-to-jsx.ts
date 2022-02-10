@@ -1,13 +1,12 @@
 import { visit } from 'unist-util-visit'
-import { Node, Parent,  } from 'unist'
+import { Node, Parent } from 'unist'
 import { Image } from 'mdast'
 import { imageDimensions } from './images'
 
 const remarkImgToJsx = () => (tree: any) =>
   new Promise<void>(async (resolve) => {
-
     const check = (node: any) => {
-      return node.type === 'paragraph' &&  node.children?.some((n: Node) => n.type === 'image')
+      return node.type === 'paragraph' && node.children?.some((n: Node) => n.type === 'image')
     }
 
     const changeNodes = [] as Node[]
@@ -21,15 +20,11 @@ const remarkImgToJsx = () => (tree: any) =>
         }
       })
     }
-    visit(
-      tree,
-      check,
-      visitor
-    )
+    visit(tree, check, visitor)
     for (let i = 0; i < changeNodes.length; i++) {
       const imageNode = changeNodes[i]
 
-      const{ title, alt, url } = imageNode as Image
+      const { title, alt, url } = imageNode as Image
       const dimensions = await imageDimensions(url)
       if (dimensions) {
         Object.assign(imageNode, {
@@ -38,14 +33,18 @@ const remarkImgToJsx = () => (tree: any) =>
           attributes: [
             { type: 'mdxJsxAttribute', name: 'alt', value: alt },
             { type: 'mdxJsxAttribute', name: 'src', value: url },
-            { type: 'mdxJsxAttribute', name: 'title', value: title},
+            { type: 'mdxJsxAttribute', name: 'title', value: title },
             { type: 'mdxJsxAttribute', name: 'width', value: dimensions.width },
-            { type: 'mdxJsxAttribute', name: 'height', value: dimensions.height},
-          ]
+            {
+              type: 'mdxJsxAttribute',
+              name: 'height',
+              value: dimensions.height,
+            },
+          ],
         })
       }
     }
-  
+
     resolve()
   })
 

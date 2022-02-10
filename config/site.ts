@@ -47,7 +47,7 @@ export const appConfig = {
       emitMetadata: false,
       reactionsEnabled: true,
     },
-  }
+  },
 }
 
 // Cache control

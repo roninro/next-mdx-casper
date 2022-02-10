@@ -23,8 +23,7 @@ export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
   const siteUrl = settings.siteUrl
 
   const title = text(`SITE_TITLE`, site.title)
-  const secondaryNav =
-    site.secondary_navigation && 0 < site.secondary_navigation.length
+  const secondaryNav = site.secondary_navigation && 0 < site.secondary_navigation.length
   const siteLogo = site.logoImage
 
   const navigation = site.navigation
@@ -49,14 +48,7 @@ export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
                     width: `${calcSiteLogoWidth(siteLogo, targetHeight)}px`,
                   }}
                 >
-                  <Image
-                    className="site-nav-logo"
-                    src={siteLogo.url}
-                    alt={title}
-                    layout="responsive"
-                    quality={nextImages.quality}
-                    {...siteLogo.dimensions}
-                  />
+                  <Image className="site-nav-logo" src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
                 </div>
               </a>
             ) : site.logo ? (
@@ -69,11 +61,7 @@ export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
           </Link>
           <div className="site-nav-content">
             <Navigation data={navigation} />
-            {postTitle && (
-              <span className={`nav-post-title ${site.logo ? `` : `dash`}`}>
-                {postTitle}
-              </span>
-            )}
+            {postTitle && <span className={`nav-post-title ${site.logo ? `` : `dash`}`}>{postTitle}</span>}
           </div>
         </div>
       </div>

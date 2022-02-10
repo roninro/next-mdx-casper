@@ -34,7 +34,7 @@ export const Navigation = ({ data, navClass }: NavigationProps) => {
       items.push(
         <li key={i} className={`nav-${navItem.label.toLowerCase()}`} role="menuitem">
           <div className={navClass}>
-            <Link href={navItem.url} >
+            <Link href={navItem.url}>
               <a>{navItem.label}</a>
             </Link>
           </div>

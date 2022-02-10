@@ -8,11 +8,7 @@ import { PostsOrPages, PostOrPage } from '@lib/mdx'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { BodyClass } from '@helpers/BodyClass'
 import { getAllSettings, Settings } from '@lib/get-settings'
-import {
-  getAllPostsMatter,
-  getPostBySlug,
-  getPostsByTag,
-} from '@lib/get-posts-data'
+import { getAllPostsMatter, getPostBySlug, getPostsByTag } from '@lib/get-posts-data'
 import { getAllPages, getPageBySlug } from '@lib/get-pages-data'
 
 /**
@@ -54,21 +50,20 @@ const PostOrPageIndex = ({ cmsData }: PostOrPageProps) => {
 export default PostOrPageIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug)))
-    throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
 
   console.time('Post - getStaticProps')
 
   const settings = await getAllSettings()
   let post: PostOrPage | null = null
   post = await getPostBySlug(`/${params.slug.join('/')}`)
-  
+
   if (!post) {
     post = await getPageBySlug(`/${params.slug.join('/')}`)
   }
 
   const isPost = !post?.page
-  
+
   if (!post) {
     return {
       notFound: true,

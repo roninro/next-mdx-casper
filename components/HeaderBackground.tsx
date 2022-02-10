@@ -1,4 +1,4 @@
-import { ReactFragment } from "react"
+import { ReactFragment } from 'react'
 
 interface HeaderBackgroundProps {
   srcImg: string
@@ -13,10 +13,8 @@ export const HeaderBackground = ({ srcImg, children }: HeaderBackgroundProps) =>
           {children}
         </div>
       ) : (
-          <div className="outer site-header-background no-image">
-            {children}
-          </div>
-        )}
+        <div className="outer site-header-background no-image">{children}</div>
+      )}
     </>
   )
 }

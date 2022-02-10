@@ -1,11 +1,10 @@
 import probe from 'probe-image-size'
 import { getCache, setCache } from './cache'
-import  fs from 'fs'
+import fs from 'fs'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { join } from 'path'
 
 import { sha1 } from 'crypto-hash'
-
 
 const imageRoot = join(process.cwd(), 'public')
 
@@ -40,12 +39,11 @@ export interface Dimensions {
   height: number
 }
 
- const tryProbeImage = async (path: string, cacheKey: string | null ): Promise<Dimensions | null> => {
-  const { width, height } = await probe(fs.createReadStream(path));
+const tryProbeImage = async (path: string, cacheKey: string | null): Promise<Dimensions | null> => {
+  const { width, height } = await probe(fs.createReadStream(path))
   setCache(cacheKey, { width, height })
   return { width, height }
- }
-
+}
 
 export const imageDimensions = async (url: string | undefined | null, noCache?: boolean): Promise<Dimensions | null> => {
   if (!url) return null
@@ -59,13 +57,12 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
 
   let hasError: boolean
   let retry = 0
-  
+
   let reader: string | NodeJS.ReadableStream = url
 
-  let file = join(imageRoot, url);
+  let file = join(imageRoot, url)
   if (fs.existsSync(file)) {
- 
-    return tryProbeImage(file, cacheKey )
+    return tryProbeImage(file, cacheKey)
   }
 
   do {
@@ -120,5 +117,3 @@ export const imageDimensionsFromFile = async (file: string, noCache?: boolean) =
 //  * If the sourceImage flag is set, stream images
 //  * from localhost to the public image folder
 //  */
-
-

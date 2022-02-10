@@ -10,9 +10,8 @@ export interface MDXRendererProps {
   [propName: string]: any
 }
 
-
 export const MDXRenderContent = ({ mdxSource }: MDXRendererProps) => {
   const MDXLayout = useMDXComponent(mdxSource)
 
-  return <MDXLayout components={components}/>
+  return <MDXLayout components={components} />
 }

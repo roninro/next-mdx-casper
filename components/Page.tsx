@@ -35,7 +35,11 @@ export const Page = ({ cmsData }: PageProps) => {
   const { title, excerpt, slug } = page
   const { siteUrl: cmsUrl, nextImages, commenting } = settings
   const featImg = page.featureImage
-  const postClass = PostClass({ tags: page.tags, isPage: page && true, isImage: !!featImg })
+  const postClass = PostClass({
+    tags: page.tags,
+    isPage: page && true,
+    isImage: !!featImg,
+  })
   const mdxSource = page.mdxSource
   if (mdxSource === undefined) throw Error('Page.tsx: mdxSource must be defined.')
 
@@ -82,7 +86,7 @@ export const Page = ({ cmsData }: PageProps) => {
               </div>
             </section>
             <p> cc `{JSON.stringify(page)}`</p>
-            { page.comment && commenting.system && <CommentContainer {...{ commenting, url: resolveUrl({ cmsUrl, slug })  }} /> }
+            {page.comment && commenting.system && <CommentContainer {...{ commenting, url: resolveUrl({ cmsUrl, slug }) }} />}
           </article>
         </div>
       </Layout>

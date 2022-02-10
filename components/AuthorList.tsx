@@ -24,7 +24,11 @@ export const AuthorList = ({ settings, authors, isPost }: AuthorListProps) => {
   return (
     <ul className="author-list">
       {authors?.map((author, i) => {
-        const url = resolveUrl({ cmsUrl, collectionPath: "/author",  slug: author.slug })
+        const url = resolveUrl({
+          cmsUrl,
+          collectionPath: '/author',
+          slug: author.slug,
+        })
         const profileImg = author.profileImage
         return (
           <HoverOnAvatar

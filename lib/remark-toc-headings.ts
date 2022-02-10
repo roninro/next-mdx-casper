@@ -1,11 +1,10 @@
-import type {Root } from 'mdast'
+import type { Root } from 'mdast'
 
-import {visit} from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 
 import { Node } from 'unist'
 
 import kebabCase from '../utils/kebabCase'
-
 
 export interface IToC {
   id: string
@@ -73,22 +72,12 @@ export default function remarkTocHeadings({ exportRef }: Options) {
     // determine parents
     toc.forEach((node, index) => {
       const prev = toc[index > 0 ? index - 1 : 0]
-      node.parentIndex =
-        node.level > prev.level
-          ? (node.parentIndex = index - 1)
-          : prev.parentIndex
-      node.parentIndex =
-        node.level < prev.level
-          ? findParent(toc, node.parentIndex, node.level)
-          : node.parentIndex
+      node.parentIndex = node.level > prev.level ? (node.parentIndex = index - 1) : prev.parentIndex
+      node.parentIndex = node.level < prev.level ? findParent(toc, node.parentIndex, node.level) : node.parentIndex
     })
 
     // add children to their parent
-    toc.forEach(
-      (node: TOC) =>
-        node.parentIndex >= 0 &&
-        (toc[node.parentIndex].items as TOC[]).push(node)
-    )
+    toc.forEach((node: TOC) => node.parentIndex >= 0 && (toc[node.parentIndex].items as TOC[]).push(node))
 
     // make final tree
     const tocTree = toc.filter(({ parentIndex }) => parentIndex === -1)

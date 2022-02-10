@@ -45,10 +45,7 @@ export default function Index({ cmsData }: IndexProps) {
         throttle={300}
         activeClass="fixed-nav-active"
         render={(sticky) => (
-          <Layout
-            {...{ bodyClass, sticky, settings, isHome: true }}
-            header={<HeaderIndex {...{ settings }} />}
-          >
+          <Layout {...{ bodyClass, sticky, settings, isHome: true }} header={<HeaderIndex {...{ settings }} />}>
             <PostView {...{ settings, posts, isHome: true }} />
           </Layout>
         )}

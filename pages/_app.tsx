@@ -14,10 +14,7 @@ import { DarkMode } from '@lib/get-settings'
 function MyApp({ Component, pageProps }: AppProps) {
   const darkMode = appConfig.darkMode
   return (
-    <ThemeProvider
-      defaultMode={darkMode.defaultMode as DarkMode}
-      overrideOS={darkMode.overrideOS}
-    >
+    <ThemeProvider defaultMode={darkMode.defaultMode as DarkMode} overrideOS={darkMode.overrideOS}>
       <OverlayProvider>
         <Component {...pageProps} />
       </OverlayProvider>

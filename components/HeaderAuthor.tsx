@@ -62,22 +62,11 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
           <div className="site-header-content author-header">
             {profileImg && nextImages.feature ? (
               <div className="author-profile-image">
-                <Image
-                  className="author-profile-image"
-                  src={profileImg.url}
-                  alt={author.name}
-                  layout="responsive"
-                  quality={nextImages.quality}
-                  {...profileImg.dimensions}
-                />
+                <Image className="author-profile-image" src={profileImg.url} alt={author.name} layout="responsive" quality={nextImages.quality} {...profileImg.dimensions} />
               </div>
             ) : author.profile_image ? (
               /* eslint-disable @next/next/no-img-element */
-              <img
-                className="author-profile-image"
-                src={author.profile_image}
-                alt={author.name}
-              />
+              <img className="author-profile-image" src={author.profile_image} alt={author.name} />
             ) : (
               <div className="author-profile-image">
                 <AvatarIcon />
@@ -87,16 +76,8 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
               <h1 className="site-title">{author.name}</h1>
               {author.bio && <h2 className="author-bio">{author.bio}</h2>}
               <div className="author-meta">
-                {author.location && (
-                  <div className="author-location">{author.location}</div>
-                )}
-                <div className="author-stats">
-                  {(numberOfPosts &&
-                    ` ${numberOfPosts} ${
-                      1 < numberOfPosts ? text(`POSTS`) : text(`POST`)
-                    }`) ||
-                    `${text(`NO_POSTS`)}`}
-                </div>
+                {author.location && <div className="author-location">{author.location}</div>}
+                <div className="author-stats">{(numberOfPosts && ` ${numberOfPosts} ${1 < numberOfPosts ? text(`POSTS`) : text(`POST`)}`) || `${text(`NO_POSTS`)}`}</div>
 
                 {twitterUrl && (
                   <span className="author-social-link">

@@ -16,7 +16,7 @@ export async function getPostBySlug(slug: string): Promise<PostOrPage | null> {
   if (!post) {
     return null
   }
-  const result =await toPostOrPage(post)
+  const result = await toPostOrPage(post)
   result.mdxSource = post?.body.code
   if (result.primary_tag) {
     result.primary_tag.count = allPosts.filter((post) => post.tags.includes(result.primary_tag?.name)).length
@@ -24,34 +24,18 @@ export async function getPostBySlug(slug: string): Promise<PostOrPage | null> {
   return result
 }
 
-
-export async function getPostsByTag(tag:string): Promise<PostsOrPages> {
+export async function getPostsByTag(tag: string): Promise<PostsOrPages> {
   const posts = allPosts.filter((post) => post.tags.includes(tag))
   return Promise.all(posts.map(toPostOrPage))
 }
 
-export async function getPostsByAuthor(author:string): Promise<PostsOrPages> {
+export async function getPostsByAuthor(author: string): Promise<PostsOrPages> {
   const posts = allPosts.filter((post) => post.authors.includes(author))
   return Promise.all(posts.map(toPostOrPage))
 }
 
-
 async function toPostOrPage(post: Post): Promise<PostOrPage> {
-  const {
-    slug,
-    title,
-    date,
-    excerpt,
-    draft,
-    comment,
-    toc,
-    toc_,
-    feature_image,
-    tags,
-    authors,
-    page,
-    readingTime,
-  } = post
+  const { slug, title, date, excerpt, draft, comment, toc, toc_, feature_image, tags, authors, page, readingTime } = post
   const _tags = tags.map((tag: string) => ({ name: tag, slug: kebabCase(tag) }))
   return {
     slug,

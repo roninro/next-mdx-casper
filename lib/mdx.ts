@@ -1,7 +1,6 @@
 import { Dimensions, imageDimensions } from './images'
 import { IToC } from './remark-toc-headings'
 
-
 export interface NextImage {
   url: string
   dimensions: Dimensions
@@ -11,7 +10,6 @@ export interface NavItem {
   url: string
   label: string
 }
-
 
 export type ArrayOrValue<T> = T | T[]
 export type Nullable<T> = T | null
@@ -45,7 +43,6 @@ export interface PostOrPage extends Identification {
 
 export interface PostsOrPages extends MdxResults<PostOrPage> {}
 
-
 export interface MdxPostOrPage extends PostOrPage {
   featureImage?: NextImage | null
   toc?: IToC[] | null
@@ -64,7 +61,6 @@ export interface Author extends Identification {
   count?: number | undefined
 }
 
-
 export interface Tag extends Identification {
   name?: string | undefined
   description?: Nullable<string> | undefined
@@ -75,7 +71,6 @@ export interface Tag extends Identification {
 export interface FeaturedTag extends Tag {
   featureImage?: NextImage
 }
-
 
 export function formatSlug(slug: string) {
   // return slug.replace(/\.(mdx|md)/, '')
@@ -88,11 +83,8 @@ export function dateSortDesc<T = any>(a: T, b: T) {
   return 0
 }
 
-
 // helpers
-export const createNextImage = async (
-  url?: string | null
-): Promise<NextImage | undefined> => {
+export const createNextImage = async (url?: string | null): Promise<NextImage | undefined> => {
   if (!url) return undefined
   const dimensions = await imageDimensions(url)
   return (dimensions && { url, dimensions }) || undefined

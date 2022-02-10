@@ -49,7 +49,11 @@ export const Post = ({ cmsData }: PostProps) => {
   const text = get(getLang(lang))
   const readingTime = post.reading_time?.replace(`min read`, text(`MIN_READ`))
   const featImg = post.featureImage
-  const postClass = PostClass({ tags: post.tags, isFeatured: !!featImg, isImage: !!featImg })
+  const postClass = PostClass({
+    tags: post.tags,
+    isFeatured: !!featImg,
+    isImage: !!featImg,
+  })
 
   const mdxSource = post.mdxSource
   if (mdxSource === undefined) throw Error('Post.tsx: htmlAst must be defined.')
@@ -65,14 +69,30 @@ export const Post = ({ cmsData }: PostProps) => {
           <Layout
             {...{ bodyClass, settings, sticky }}
             header={<HeaderPost {...{ settings, sticky, title }} />}
-            previewPosts={<PreviewPosts {...{ settings, primaryTag: post.primary_tag, posts: previewPosts, prev: prevPost, next: nextPost }} />}
+            previewPosts={
+              <PreviewPosts
+                {...{
+                  settings,
+                  primaryTag: post.primary_tag,
+                  posts: previewPosts,
+                  prev: prevPost,
+                  next: nextPost,
+                }}
+              />
+            }
           >
             <div className="inner">
               <article className={`post-full ${postClass}`}>
                 <header className="post-full-header">
                   {post.primary_tag && (
                     <section className="post-full-tags">
-                      <Link href={resolveUrl({ cmsUrl, collectionPath: '/tag', slug: post.primary_tag.slug })}>
+                      <Link
+                        href={resolveUrl({
+                          cmsUrl,
+                          collectionPath: '/tag',
+                          slug: post.primary_tag.slug,
+                        })}
+                      >
                         <a>{post.primary_tag.name}</a>
                       </Link>
                     </section>
@@ -91,17 +111,25 @@ export const Post = ({ cmsData }: PostProps) => {
                       <section className="post-full-byline-meta">
                         <h4 className="author-name">
                           {post.authors?.map((author, i) => (
-                              <span key={i}>
+                            <span key={i}>
                               {i > 0 ? `, ` : ``}
-                              <Link key={i} href={resolveUrl({ cmsUrl, collectionPath: '/author', slug: author.slug })}>
+                              <Link
+                                key={i}
+                                href={resolveUrl({
+                                  cmsUrl,
+                                  collectionPath: '/author',
+                                  slug: author.slug,
+                                })}
+                              >
                                 {author.name}
                               </Link>
-                              </span>
+                            </span>
                           ))}
                         </h4>
                         <div className="byline-meta-content">
                           <time className="byline-meta-date" dateTime={post.date || ''}>
-                            {dayjs(post.date || '').format('D MMMM, YYYY')}&nbsp;
+                            {dayjs(post.date || '').format('D MMMM, YYYY')}
+                            &nbsp;
                           </time>
                           <span className="byline-reading-time">
                             <span className="bull">&bull;</span> {readingTime}
@@ -140,14 +168,22 @@ export const Post = ({ cmsData }: PostProps) => {
                   ))}
 
                 <section className="post-full-content">
-                  {toc.enable && !!post.toc && <TableOfContents {...{ toc: post.toc, url: resolveUrl({ cmsUrl, slug }), maxDepth: toc.maxDepth, lang }} />}
+                  {toc.enable && !!post.toc && (
+                    <TableOfContents
+                      {...{
+                        toc: post.toc,
+                        url: resolveUrl({ cmsUrl, slug }),
+                        maxDepth: toc.maxDepth,
+                        lang,
+                      }}
+                    />
+                  )}
                   <div className="post-content load-external-scripts">
                     <MDXRenderContent mdxSource={mdxSource} />
                   </div>
                 </section>
 
-                { !!post.comment &&  commenting.system && <CommentContainer {...{ commenting, url: resolveUrl({ cmsUrl, slug })  }} /> }
-
+                {!!post.comment && commenting.system && <CommentContainer {...{ commenting, url: resolveUrl({ cmsUrl, slug }) }} />}
               </article>
             </div>
           </Layout>

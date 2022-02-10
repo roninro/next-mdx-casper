@@ -8,9 +8,7 @@ const rehypeImgSize = () => (tree: Root) =>
 
     const visitor = (node: Element) => {
       if (node.tagName === 'p') {
-        const chs = node.children.filter(
-          (child: any) => child.tagName === 'img'
-        )
+        const chs = node.children.filter((child: any) => child.tagName === 'img')
         imgs = imgs.concat(chs as Element[])
         if (chs.length > 0) {
           node.tagName = 'div'

@@ -26,7 +26,11 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
 
   const featImg = post.featureImage
   const readingTime = post.reading_time?.replace(`min read`, text(`MIN_READ`))
-  const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
+  const postClass = PostClass({
+    tags: post.tags,
+    isFeatured: post.featured,
+    isImage: !!featImg,
+  })
   const large = (featImg && isHome && num !== undefined && 0 === num % 6 && `post-card-large`) || ``
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
   const primary_tag = post?.tags?.length ? post.tags[0] : null
@@ -77,7 +81,13 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                 {authors?.map((author, i) => (
                   <span key={i}>
                     {i > 0 ? `, ` : ``}
-                    <Link href={resolveUrl({ cmsUrl, collectionPath: '/author',  slug: author.slug })}>
+                    <Link
+                      href={resolveUrl({
+                        cmsUrl,
+                        collectionPath: '/author',
+                        slug: author.slug,
+                      })}
+                    >
                       <a>{author.name}</a>
                     </Link>
                   </span>
