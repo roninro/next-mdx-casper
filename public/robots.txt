@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-mdx-casper.vercel.app
+
+# Sitemaps
+Sitemap: https://next-mdx-casper.vercel.app/sitemap.xml
+Sitemap: https://next-mdx-casper.vercel.app/sitemap-0.xml
