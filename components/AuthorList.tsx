@@ -7,7 +7,7 @@ import { getLang, get } from '@utils/use-lang'
 
 import { HoverOnAvatar } from '@components/effects/HoverOnAvatar'
 import { AvatarIcon } from '@icons/AvatarIcon'
-import { Author, NextImage } from '@lib/mdx'
+import { Author } from '@lib/mdx'
 import { Settings } from '@lib/get-settings'
 
 interface AuthorListProps {

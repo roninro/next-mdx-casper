@@ -1844,7 +1844,11 @@ html.casper .subscribe-form .error .message-error {
 
 html.casper .post-full-comments {
     margin: 0 auto;
-    max-width: 840px;
+    text-align: center;
+}
+
+html.casper .post-full-comments {
+    
 }
 
 

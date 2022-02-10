@@ -59,6 +59,7 @@ export const lang: KeyObjectMap = {
     SUBMIT: `Submit`,
     YOUR_MESSAGE: `Your message`,
     TABLE_OF_CONTENTS: `Table of Contents`,
+    LOAD_COMMENTS: `Load Comments`,
   },
   de: {
     A_COLLECTION_OF: `Zu diesem Thema gibt es`,
@@ -112,6 +113,7 @@ export const lang: KeyObjectMap = {
     SUBMIT: `Abschicken`,
     YOUR_MESSAGE: `Deine Nachricht`,
     TABLE_OF_CONTENTS: `Inhaltsverzeichnis`,
+    LOAD_COMMENTS: `Kommentare laden`
   },
   es: {
     A_COLLECTION_OF: `Una colección de`,

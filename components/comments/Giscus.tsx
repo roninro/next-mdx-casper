@@ -1,6 +1,7 @@
 import { useTheme } from '@components/contexts/themeProvider'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import React from 'react'
+import { getLang, get } from '@utils/use-lang'
 
 interface GiscusCommentsProps {
   repo?: string
@@ -23,15 +24,19 @@ export const Giscus = ({
   lang,
   reactionsEnabled,
 }: GiscusCommentsProps) => {
+  const text = get(getLang(lang))
+
   const { getDark } = useTheme()
   const dark = getDark()
   const commentsTheme = dark === 'dark' ? 'dark_dimmed' : 'light'
 
   const COMMENTS_ID = 'comments-container'
 
-  useEffect(() => {
-    LoadComments()
-  }, []);
+  const [enableLoadComments, setEnabledLoadComments] = useState(true)
+
+  // useEffect(() => {
+  //   LoadComments()
+  // }, []);
 
   useEffect(() => {
     
@@ -48,7 +53,7 @@ export const Giscus = ({
   }, [commentsTheme])
 
   const LoadComments = useCallback(() => {
-    // setEnabledLoadComments(false)
+    setEnabledLoadComments(false)
     const script = document.createElement('script')
     script.src = 'https://giscus.app/client.js'
     script.setAttribute('data-repo', repo!)
@@ -73,6 +78,9 @@ export const Giscus = ({
   }, [commentsTheme])
 
   return (
+    <div className='post-full-comments'>
+      {enableLoadComments && <button onClick={LoadComments}>{text(`LOAD_COMMENTS`)}</button>}
       <div className="giscus" id={COMMENTS_ID} />
+    </div>
   )
 }
