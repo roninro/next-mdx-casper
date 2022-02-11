@@ -19,7 +19,7 @@ export async function getPostBySlug(slug: string): Promise<PostOrPage | null> {
   const result = await toPostOrPage(post)
   result.mdxSource = post?.body.code
   if (result.primary_tag) {
-    result.primary_tag.count = allPosts.filter((post) => post.tags.includes(result.primary_tag?.name)).length
+    result.primary_tag.count = allPosts.filter((post) => post.tags.includes(result.primary_tag?.name || '')).length
   }
   return result
 }
@@ -47,8 +47,8 @@ async function toPostOrPage(post: Post): Promise<PostOrPage> {
     comment: comment === false ? false : true,
     featureImage: (await createNextImage(feature_image)) || null,
     toc: toc === true ? (toc_ as IToC[]) : null,
-    tags: _tags || [],
-    authors: (await getAuthors(authors || [])) || null,
+    tags: _tags,
+    authors: (await getAuthors(authors || [])) || [],
     primary_tag: _tags[0] || null,
     reading_time: readingTime.text,
   }
