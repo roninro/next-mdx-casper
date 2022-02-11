@@ -8,7 +8,6 @@ import { getLang, get } from '@utils/use-lang'
 
 import { AuthorList } from '@components/AuthorList'
 import { PostClass } from '@helpers/PostClass'
-// import { collections } from '@lib/collections'
 import { PostOrPage } from '@lib/mdx'
 import { Settings } from '@lib/get-settings'
 
@@ -45,10 +44,9 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                   src={featImg.url}
                   alt={post.title}
                   sizes="(max-width: 640px) 320px, (max-width: 1000px) 500px, 680px"
-                  layout="responsive"
+                  layout="fill"
                   objectFit="cover"
                   quality={nextImages.quality}
-                  {...featImg.dimensions}
                 />
               </div>
             ) : (

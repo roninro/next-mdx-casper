@@ -1,8 +1,8 @@
 # next-mdx-casper
 
 ## Demo
-    
-https://next-mdx-casper.netlify.com
+
+https://next-mdx-casper.vercel.app
 
 ## Performance
 
