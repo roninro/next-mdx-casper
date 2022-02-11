@@ -1071,7 +1071,7 @@ html.casper .post-full-content blockquote,
 html.casper .post-full-comments,
 html.casper .footnotes {
     margin: 0 0 1.5em 0;
-    /* min-width: 100%; */
+    min-width: 100%;
 }
 @media (max-width: 500px) {
     html.casper .post-full-content p,
